@@ -7,6 +7,7 @@ test("trip and traveller selections update the package total without overflow", 
   page.on("pageerror", error => errors.push(error.message));
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "BOOK A GETAWAY", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "CONTINUE TO DETAILS", exact: true })).toBeEnabled();
   await page.getByRole("radio", { name: "Akosombo & the Volta River", exact: true }).check();
   await page.getByRole("radio", { name: "2 PEOPLE", exact: true }).check();
   await expect(page.locator(".total-line")).toContainText("2,500");

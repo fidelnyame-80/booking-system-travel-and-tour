@@ -71,7 +71,12 @@ export default function BookingFlow({ onViewBookings, onComplete }: { onViewBook
       })
       .then(items => {
         setDepartures(items);
-        setDate(previous => items.some(item => item.date === previous && item.remaining >= guestRef.current) ? previous : "");
+        // Start with a usable departure selected. The picker remains editable,
+        // but a visitor can proceed without having to discover an unselected
+        // date strip above the fold.
+        setDate(previous => items.some(item => item.date === previous && item.remaining >= guestRef.current)
+          ? previous
+          : items.find(item => item.remaining >= guestRef.current)?.date || "");
         setWeek(previous => previous && items.some(item => item.date >= previous && item.date <= addDays(previous, 6)) ? previous : items[0] ? mondayOf(items[0].date) : "");
       })
       .catch(reason => { if (reason.name !== "AbortError") setError(reason.message || "We couldn’t load departures. Please try again."); })
