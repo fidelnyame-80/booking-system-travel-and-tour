@@ -1,4 +1,4 @@
-﻿# Cruise Getaways
+# Cruise Getaways
 
 A mobile-first Ghana travel booking application built with Next.js, React, TypeScript, and Neon PostgreSQL. The editorial interface uses locally hosted destination photography and fonts. No third-party scripts are loaded on the booking path.
 
