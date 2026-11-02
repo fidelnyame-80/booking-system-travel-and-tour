@@ -71,7 +71,7 @@ input, textarea { color: inherit; }
 .form-body { padding: 24px 20px 0; }
 .guest-options { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 .guest-option { border-radius: 7px; background: var(--soft); position: relative; cursor: pointer; min-height: 40px; display: grid; place-items: center; font-family: var(--heading); font-weight: 700; font-size: 13px; }
-.guest-option input, .trip-option input { position: absolute; opacity: 0; inset: 0; height: 100%; width: 100%; margin: 0; cursor: pointer; }
+.guest-option input, .trip-option input { position: absolute; z-index: 1; opacity: 0; inset: 0; height: 100%; width: 100%; margin: 0; cursor: pointer; }
 .guest-option.selected, .trip-option.selected { background: var(--ink); color: white; }
 .guest-option:has(input:focus-visible), .trip-option:has(input:focus-visible) { outline: 2px solid #747474; outline-offset: 3px; }
 .trip-field { margin-top: 25px; }
@@ -231,4 +231,134 @@ summary::-webkit-details-marker { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
+
+/* Dark-trip edition: a deep ink surface with mineral green booking accents. */
+:root {
+  --ink: #eef4ef;
+  --soft: #17201f;
+  --line: #273330;
+  --muted: #9aa9a3;
+  --acid: #b7ee78;
+  --night: #07100f;
+  --panel: #0e1917;
+  --panel-2: #131f1d;
+}
+body {
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 50% 2%, #1d3931 0, transparent 31rem),
+    radial-gradient(circle at 0 100%, #172d29 0, transparent 33rem),
+    #050908;
+}
+::selection { background: #b7ee78; color: #06100d; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible { outline-color: var(--acid); }
+.booking-app {
+  background: linear-gradient(180deg, #0d1715, #09110f 42%, #080e0d);
+  box-shadow: 0 24px 70px #000a, 0 0 0 1px #ffffff0a;
+}
+.booking-header, .progress-strip { background: linear-gradient(145deg, #050807, #111f1b); }
+.booking-header { border-bottom: 1px solid #ffffff0d; }
+.brand-line { color: #b7ee78; }
+.header-bookings { color: #a9bbb3; }
+.header-bookings:hover { color: var(--acid); }
+.progress-strip { border-bottom: 1px solid #ffffff0c; color: #789087; }
+.progress-strip li > span { border-color: #395046; }
+.progress-strip .active { color: var(--acid); }
+.progress-strip .active > span { color: #07100f; background: var(--acid); border-color: var(--acid); box-shadow: 0 0 20px #b7ee7844; }
+.progress-strip .done { color: #c9d8d1; }
+.date-strip { background: linear-gradient(160deg, #172621, #101a18); border-bottom: 1px solid #ffffff0b; }
+.month-navigation strong { color: #f1f8f4; }
+.month-navigation button:not(:disabled):hover { color: var(--acid); }
+.day-option > span { color: #80938b; }
+.day-option > i { background: #6c8378; }
+.day-option.selected > strong { color: #08110e; background: var(--acid); box-shadow: 0 0 0 4px #b7ee7815, 0 0 20px #b7ee783d; }
+.day-option.selected > i { background: var(--acid); }
+.date-strip-note { color: #b2c3bb; }
+.form-body { background: transparent; }
+legend { color: #f3f8f5; }
+legend > span, .trip-option small, .summary-row > span:first-child, .package-breakdown > p, .small-note, .optional { color: #91a49c; }
+.guest-option { background: #182321; color: #dce8e1; box-shadow: inset 0 0 0 1px #ffffff08; }
+.guest-option:hover:not(.selected) { background: #23312d; }
+.guest-option.selected, .trip-option.selected { color: #06100d; background: var(--acid); box-shadow: 0 6px 18px #b7ee7828; }
+.trip-option { color: #b7c7c0; }
+.trip-option img { border-color: #273530; filter: saturate(.88) contrast(1.08); }
+.trip-option:hover img { border-color: #7f9f8f; }
+.trip-option.selected img { border-color: #e7f9d4; }
+.trip-option.selected small { color: #244434; }
+.trip-details { border-bottom-color: var(--line); }
+.trip-details summary > span:last-child { color: var(--acid); }
+.trip-details-body p, .trip-recap p, .trip-recap small, .section-label p, .contact-review > span { color: #93a59d; }
+.trip-details-body h3 { color: var(--acid); }
+.package-breakdown { border-color: var(--line); }
+.booking-action-bar { background: linear-gradient(180deg, #0b1210 0%, #07100e 100%); border-top-color: #ffffff12; box-shadow: 0 -10px 30px #0005; }
+.total-line > span { color: #ecf6ef; }
+.total-line > strong { color: var(--acid); text-shadow: 0 0 18px #b7ee7822; }
+.total-line small, .booking-action-bar > p { color: #9aaca4; }
+.primary-button { background: var(--acid); color: #06100d; border-color: var(--acid); box-shadow: 0 8px 25px #b7ee7824; }
+.primary-button:hover:not(:disabled) { color: #06100d; background: #d2ff98; }
+.primary-button:disabled { color: #c8d4ce; background: #24312d; border-color: #2c3c36; box-shadow: none; }
+.secondary-button { color: #e4eee8; background: #17221f; border-color: #385047; }
+.secondary-button:hover { background: #20312c; border-color: #b7ee78; }
+.app-footer { color: #73867d; background: transparent; }
+.app-footer button { color: #91a69d; }
+.app-footer button:hover { color: var(--acid); }
+.trip-recap { border-color: var(--line); }
+.trip-recap img { box-shadow: 0 0 0 1px #ffffff13; }
+.trip-recap strong, .section-label h2 { color: #f0f7f2; }
+.form-fields input, .form-fields textarea { color: #edf5f0; background: #121e1b; border-color: #2a3b35; caret-color: var(--acid); }
+.form-fields input::placeholder, .form-fields textarea::placeholder { color: #71837b; }
+.form-fields input:focus, .form-fields textarea:focus { border-color: var(--acid); box-shadow: 0 0 0 3px #b7ee7814; outline: 0; }
+.confirmation-review { border-color: #30443c; background: #101b18; }
+.confirmation-review > div { border-color: #263831; }
+.confirmation-review span { color: #99aca3; }
+.confirmation-review strong { color: #e6f0e9; }
+.mock-payment-label { color: #0a1813; background: var(--acid); }
+.payment-option { color: #e7f0eb; background: #121e1b; border-color: #263b33; }
+.payment-option:hover { border-color: #608775; }
+.payment-option.selected { color: #eff9f1; background: #172822; border-color: var(--acid); box-shadow: 0 0 0 3px #b7ee780d; }
+.payment-option input, .terms-checkbox input { accent-color: var(--acid); }
+.payment-option small { color: #93a69e; }
+.payment-wordmark { color: var(--acid); }
+.mock-payment-card { background: linear-gradient(135deg, #1c3630, #0b1412 55%, #203b32); border: 1px solid #507260; box-shadow: inset 0 1px #ffffff13, 0 16px 30px #0004; }
+.mock-payment-card > span, .mock-payment-card > small { color: #bbcec4; }
+.review-total { border-color: var(--line); }
+.terms-checkbox { color: #a3b3ac; }
+.form-error { color: #ffd1c8; background: #351e1c; border: 1px solid #713830; }
+.confirmation { background: transparent; }
+.confirmation-mark { color: var(--acid); border-color: #668a76; background: #14241e; box-shadow: 0 0 30px #b7ee7820; }
+.confirmation > h2 { color: var(--acid); }
+.confirmation > p:not(.small-note):not(.form-error) { color: #a5b5ae; }
+.confirmation-ticket { border-color: #30423a; background: #0f1916; }
+.field-label, .ticket-trip p, .record-reference { color: #91a49c; }
+.booking-reference { color: var(--acid); border-color: #33453e; }
+.ticket-trip h3 { color: #eaf3ed; }
+.status-line { color: #9eb0a7; border-color: #2e4038; }
+.status-line i { background: var(--acid); box-shadow: 0 0 8px #b7ee78; }
+.status-line > strong { color: #edf7f0; }
+.bookings-content { background: transparent; }
+.bookings-intro h2 { color: #eff7f1; }
+.bookings-intro > span, .saved-booking-actions > span { color: #91a49c; }
+.booking-filters button { color: #adc0b6; background: #17221f; }
+.booking-filters button.active { color: #07100d; background: var(--acid); }
+.saved-booking { background: #101b18; border-color: #2b3b35; box-shadow: 0 8px 20px #0002; }
+.saved-booking-top h3 { color: #eff7f1; }
+.saved-booking-top p { color: #99aca3; }
+.cancel-request { color: #96aba1; }
+.cancel-request:hover { color: var(--acid); }
+.cancel-confirmation { border-color: #2d4139; }
+.cancel-confirmation p { color: #b7c6bf; }
+.empty-number { color: #34473e; }
+.empty-state h3 { color: #edf6ef; }
+.empty-state p, .loading-message { color: #9bb0a6; }
+.dialog { color: #edf6ef; background: #0d1714; box-shadow: 0 25px 90px #000b; }
+.dialog::backdrop { background: #000c; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
+.dialog-top { background: #15231e; border-bottom: 1px solid #2b4037; }
+.close-button { color: var(--acid); }
+.prose-panel h2 { color: var(--acid); }
+.prose-panel h3 { color: #e9f3ec; }
+.prose-panel p, .credits-list li > span { color: #9bb0a6; }
+.credits-list li { border-color: #2c4038; }
+@media (min-width: 600px) {
+  .booking-app { box-shadow: 0 28px 80px #000b, 0 0 0 1px #ffffff10; }
 }
